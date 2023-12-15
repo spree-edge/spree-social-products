@@ -8,18 +8,21 @@ Gem::Specification.new do |s|
   s.name        = 'spree_social_products'
   s.version     = SpreeSocialProducts.version
   s.summary     = 'Adds social network sharing to product pages'
-  s.required_ruby_version = '>= 2.1.0'
+  s.required_ruby_version = '>= 2.5'
 
-  s.author    = 'John Dyer'
-  s.email     = 'jdyer@spreecommerce.com'
-  s.homepage  = 'http://www.spreecommerce.com'
+  s.author    = 'Bluebash Spree Team'
+  s.email     = 'rahul-dev@bluebash.co'
+  s.homepage  = 'https://github.com/Nextband-online/spree_social_products'
 
-  s.files        = `git ls-files`.split("\n")
-  s.test_files   = `git ls-files -- spec/*`.split("\n")
+  s.files       = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'spree_core', '~> 3.1.0.beta'
+  spree_version = '>= 4.1'
+  s.add_dependency 'rails', '6.1.7.4'
+  s.add_dependency 'spree', spree_version
+  s.add_dependency 'spree_backend', spree_version
+  s.add_dependency 'spree_extension'
 
   s.add_development_dependency 'capybara', '~> 2.4.4'
   s.add_development_dependency 'coffee-rails', '~> 4.0.0'
