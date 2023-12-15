@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree', spree_version
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_extension'
-
+  s.add_dependency 'coffee-rails'
   s.add_development_dependency 'capybara', '~> 2.4.4'
   s.add_development_dependency 'coffee-rails', '~> 4.0.0'
   s.add_development_dependency 'database_cleaner', '~> 1.4.0'

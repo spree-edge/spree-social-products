@@ -5,7 +5,7 @@
     <meta property="og:url" content="<%= spree.product_url(@product) %>" />
     <meta property="og:description" content="<%= @product.description %>" />
     <% @product.images.each do |img| %>
-      <meta property="og:image" content="<%= absolute_image_url(img.attachment.url) %>" />
+      <meta property="og:image" content="<%= absolute_image_url(main_app.rails_blob_path(img.attachment, only_path: true)) %>" />
     <% end %>
     <meta property="fb:app_id" content="<%= Spree::Social::Config.preferred_facebook_app_id %>" />
   <% end %>
