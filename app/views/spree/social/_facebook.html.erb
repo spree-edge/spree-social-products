@@ -1,4 +1,4 @@
-<% unless Spree::Social::Config.preferred_facebook_app_id.nil? %>
+<% unless @social_setting.facebook_app_id.nil? %>
   <% content_for :head do %>
     <meta property="og:title" content="<%= @product.name %>" />
     <meta property="og:type" content="product" />
@@ -7,17 +7,17 @@
     <% @product.images.each do |img| %>
       <meta property="og:image" content="<%= absolute_image_url(main_app.rails_blob_path(img.attachment, only_path: true)) %>" />
     <% end %>
-    <meta property="fb:app_id" content="<%= Spree::Social::Config.preferred_facebook_app_id %>" />
+    <meta property="fb:app_id" content="<%= @social_setting.facebook_app_id %>" />
   <% end %>
 
   <div id="fb-root"></div>
 
   <div
     class="fb-like"
-    data-send="<%= Spree::Social::Config.preferred_facebook_send_button %>"
+    data-send="<%= @social_setting.facebook_send_button %>"
     data-width="450"
-    data-show-faces="<%= Spree::Social::Config.preferred_facebook_show_faces %>"
-    data-layout="<%= Spree::Social::Config.preferred_facebook_layout %>"
-    data-colorscheme="<%= Spree::Social::Config.preferred_facebook_color_scheme %>"
-    data-action="<%= Spree::Social::Config.preferred_facebook_verb_to_display %>"></div>
+    data-show-faces="<%= @social_setting.facebook_show_faces %>"
+    data-layout="<%= @social_setting.facebook_layout %>"
+    data-colorscheme="<%= @social_setting.facebook_color_scheme %>"
+    data-action="<%= @social_setting.facebook_verb_to_display %>"></div>
 <% end %>

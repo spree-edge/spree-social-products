@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <meta property="twitter:card" content="product" />
-  <% unless Spree::Social::Config.preferred_twitter_id.nil? %>
-    <meta property="twitter:site" content="<%= Spree::Social::Config.preferred_twitter_id %>" />
+  <% unless @social_setting.twitter_id.nil? %>
+    <meta property="twitter:site" content="<%= @social_setting.twitter_id %>" />
   <% end %>
   <meta property="twitter:title" content="<%= @product.name %>" />
   <meta property="twitter:description" content="<%= @product.description %>" />

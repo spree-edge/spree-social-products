@@ -1,48 +1,50 @@
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script type="text/javascript">
-  var bindFacebookEvents, fb_events_bound, fb_root, initializeFacebookSDK, loadFacebookSDK, restoreFacebookRoot, saveFacebookRoot;
+<% if Flipper.enabled?(:social_setting, current_store.try(:id)) %>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="text/javascript">
+    var bindFacebookEvents, fb_events_bound, fb_root, initializeFacebookSDK, loadFacebookSDK, restoreFacebookRoot, saveFacebookRoot;
 
-  fb_root = null;
+    fb_root = null;
 
-  fb_events_bound = false;
+    fb_events_bound = false;
 
-  $(function() {
-    loadFacebookSDK();
-    if (!fb_events_bound) {
-      return bindFacebookEvents();
-    }
-  });
-
-  bindFacebookEvents = function() {
-    $(document).on('page:fetch', saveFacebookRoot).on('page:change', restoreFacebookRoot).on('page:load', function() {
-      return typeof FB !== "undefined" && FB !== null ? FB.XFBML.parse() : void 0;
+    $(function() {
+      loadFacebookSDK();
+      if (!fb_events_bound) {
+        return bindFacebookEvents();
+      }
     });
-    return fb_events_bound = true;
-  };
 
-  saveFacebookRoot = function() {
-    return fb_root = $('#fb-root').detach();
-  };
+    bindFacebookEvents = function() {
+      $(document).on('page:fetch', saveFacebookRoot).on('page:change', restoreFacebookRoot).on('page:load', function() {
+        return typeof FB !== "undefined" && FB !== null ? FB.XFBML.parse() : void 0;
+      });
+      return fb_events_bound = true;
+    };
 
-  restoreFacebookRoot = function() {
-    if ($('#fb-root').length > 0) {
-      return $('#fb-root').replaceWith(fb_root);
-    } else {
-      return $('body').append(fb_root);
-    }
-  };
+    saveFacebookRoot = function() {
+      return fb_root = $('#fb-root').detach();
+    };
 
-  loadFacebookSDK = function() {
-    window.fbAsyncInit = initializeFacebookSDK;
-    return $.getScript("//connect.facebook.net/en_US/all.js#xfbml=1");
-  };
+    restoreFacebookRoot = function() {
+      if ($('#fb-root').length > 0) {
+        return $('#fb-root').replaceWith(fb_root);
+      } else {
+        return $('body').append(fb_root);
+      }
+    };
 
-  initializeFacebookSDK = function() {
-    return FB.init({
-      appId: "<%= Spree::Social::Config.preferred_facebook_app_id %>",
-      status: true,
-      cookie: true,
-      xfbml: true
-    });
-  };
-</script>
+    loadFacebookSDK = function() {
+      window.fbAsyncInit = initializeFacebookSDK;
+      return $.getScript("//connect.facebook.net/en_US/all.js#xfbml=1");
+    };
+
+    initializeFacebookSDK = function() {
+      return FB.init({
+        appId: "<%= current_store.social_setting&.facebook_app_id %>",
+        status: true,
+        cookie: true,
+        xfbml: true
+      });
+    };
+  </script>
+<% end %>
