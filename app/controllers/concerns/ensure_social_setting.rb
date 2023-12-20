@@ -7,6 +7,6 @@ module EnsureSocialSetting
   end
 
   def ensure_social_setting_enabled
-    raise CanCan::AccessDenied unless Flipper.enabled?(:social_setting, current_store.try(:id))
+    raise CanCan::AccessDenied unless Flipper.enabled?(:social_products, current_store.try(:id))
   end
 end

@@ -18,9 +18,15 @@ module SpreeSocialProducts
         escape absolute_image_url(main_app.rails_blob_path(image.attachment, only_path: true))
       end
 
-      def absolute_image_url(url)
-        return url if url.starts_with? 'http'
-        request.protocol + request.host + url
+      def absolute_image_url(product)
+        image_url = begin
+                      main_app.rails_blob_path(@product.images.first.attachment, only_path: true)
+                    rescue
+                      ''
+                    end
+
+        return image_url if image_url.starts_with? 'http'
+        request.protocol + request.host + image_url
       end
 
       private
