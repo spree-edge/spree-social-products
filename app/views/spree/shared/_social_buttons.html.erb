@@ -1,5 +1,5 @@
 <% if Flipper.enabled?(:social_products, current_store.try(:id)) %>
-  <div id="social_nav">
+  <div id="social_nav" class="mb-5">
     <h6><%= Spree.t(:bookmark_or_share_this, scope: :social) %></h6>
     <ul>
       <% if @social_setting&.twitter_button %>
