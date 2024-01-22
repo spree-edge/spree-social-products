@@ -1,39 +1,41 @@
 <% if Flipper.enabled?(:social_products, current_store.try(:id)) %>
-  <div id="social_nav" class="mb-5">
-    <h6><%= Spree.t(:bookmark_or_share_this, scope: :social) %></h6>
-    <ul>
-      <% if @social_setting&.twitter_button %>
-        <li class="twitter">
-          <%= render 'spree/social/twitter' %>
-        </li>
-      <% end %>
-      <% if @social_setting&.pinterest_button %>
-        <li class="pinterest">
-          <%= render 'spree/social/pinterest' %>
-        </li>
-      <% end %>
-      <% if @social_setting&.reddit_button %>
-        <li class="reddit">
-          <%= render 'spree/social/reddit' %>
-        </li>
-      <% end %>
-      <% if @social_setting&.tumblr_button %>
-        <li class="tumblr">
-          <%= render 'spree/social/tumblr' %>
-        </li>
-      <% end %>
-      <% if @social_setting&.delicious_button %>
-        <li class="delicious">
-          <%= render 'spree/social/delicious' %>
-        </li>
-      <% end %>
-    </ul>
-    <ul class="facebook-like-button">
-      <% if @social_setting&.facebook_button %>
-        <li class="facebook">
-          <%= render 'spree/social/facebook' %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+  <% cache [base_cache_key, current_store.code, @social_setting.updated_at.to_i] do %>
+    <div id="social_nav" class="mb-5">
+      <h6><%= Spree.t(:bookmark_or_share_this, scope: :social) %></h6>
+      <ul>
+        <% if @social_setting&.twitter_button %>
+          <li class="twitter">
+            <%= render 'spree/social/twitter' %>
+          </li>
+        <% end %>
+        <% if @social_setting&.pinterest_button %>
+          <li class="pinterest">
+            <%= render 'spree/social/pinterest' %>
+          </li>
+        <% end %>
+        <% if @social_setting&.reddit_button %>
+          <li class="reddit">
+            <%= render 'spree/social/reddit' %>
+          </li>
+        <% end %>
+        <% if @social_setting&.tumblr_button %>
+          <li class="tumblr">
+            <%= render 'spree/social/tumblr' %>
+          </li>
+        <% end %>
+        <% if @social_setting&.delicious_button %>
+          <li class="delicious">
+            <%= render 'spree/social/delicious' %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="facebook-like-button">
+        <% if @social_setting&.facebook_button %>
+          <li class="facebook">
+            <%= render 'spree/social/facebook' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>
