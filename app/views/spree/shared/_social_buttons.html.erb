@@ -1,5 +1,5 @@
 <% if Flipper.enabled?(:social_products, current_store.try(:id)) %>
-  <% cache [base_cache_key, current_store.code, @social_setting.updated_at.to_i] do %>
+  <% cache [base_cache_key, current_store.code, @social_setting.updated_at.to_i, @social_setting.facebook_verb_to_display] do %>
     <div id="social_nav" class="mb-5">
       <h6><%= Spree.t(:bookmark_or_share_this, scope: :social) %></h6>
       <ul>
