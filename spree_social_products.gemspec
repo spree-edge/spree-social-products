@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = 'spree_social_products'
   s.version     = SpreeSocialProducts.version
   s.summary     = 'Adds social network sharing to product pages'
-  s.required_ruby_version = '>= 2.5'
+  s.required_ruby_version = '>= 3.3'
 
   s.author    = 'Bluebash Spree Team'
   s.email     = 'rahul-dev@bluebash.co'
@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  spree_version = '>= 4.1'
-  s.add_dependency 'rails', '6.1.7.4'
+  spree_version = '>= 4.8'
+  s.add_dependency 'rails', '>= 7.1'
   s.add_dependency 'spree', spree_version
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_extension'

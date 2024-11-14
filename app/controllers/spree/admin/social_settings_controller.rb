@@ -1,7 +1,6 @@
 module Spree
   module Admin
     class SocialSettingsController < ResourceController
-      include EnsureSocialSetting
       before_action :find_social_settings, only: [:edit, :update]
 
       def edit
