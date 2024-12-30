@@ -1,18 +1,35 @@
 <% content_for :head do %>
   <meta property="twitter:card" content="product" />
-  <% unless Spree::Social::Config.preferred_twitter_id.nil? %>
-    <meta property="twitter:site" content="<%= Spree::Social::Config.preferred_twitter_id %>" />
+  <% unless @social_setting.twitter_id.nil? %>
+    <meta property="twitter:site" content="<%= @social_setting.twitter_id %>" />
   <% end %>
   <meta property="twitter:title" content="<%= @product.name %>" />
   <meta property="twitter:description" content="<%= @product.description %>" />
-  <meta property="twitter:image" content="<%= absolute_image_url(@product.images.first.attachment.url) %>" />
+  <meta property="twitter:image" content="<%= absolute_image_url(@product) %>" />
   <% unless @product.price.nil? %>
     <meta property="twitter:label1" content="<%= Spree.t(:price) %>" />
     <meta property="twitter:data1" content="<%= @product.price_in(current_currency).money %>" />
   <% end %>
 <% end %>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-count="none">
-  <%= Spree.t(:tweet, scope: [:social, :buttons]) %>
+<a class="dropdown-item p-2 d-flex align-items-center border-bottom" href="https://twitter.com/share" data-count="none">
+  <div class="flex items-center">
+    <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_3476_3484)">
+        <mask id="mask0_3476_3484" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="13" height="14">
+          <path d="M0 0.5H13V13.5H0V0.5Z" fill="white"/>
+        </mask>
+        <g mask="url(#mask0_3476_3484)">
+          <path d="M10.2375 1.10938H12.2311L7.87614 6.09952L13 12.8911H8.98857L5.84443 8.77288L2.25086 12.8911H0.255357L4.91307 7.5518L0 1.1103H4.11357L6.95129 4.8738L10.2375 1.10938ZM9.53643 11.6951H10.6414L3.51 2.24316H2.32514L9.53643 11.6951Z" fill="black"/>
+        </g>
+      </g>
+      <defs>
+        <clipPath id="clip0_3476_3484">
+          <rect width="13" height="13" fill="white" transform="translate(0 0.5)"/>
+        </clipPath>
+      </defs>
+    </svg>
+    <p class="d-inline font-weight-bold"><%= Spree.t(:tweet, scope: [:social, :buttons]) %></p>
+  </div>
 </a>
 <script src="//platform.twitter.com/widgets.js"></script>

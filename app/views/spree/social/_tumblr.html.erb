@@ -1,6 +1,11 @@
-<% title = Spree.t(:share_on_tumblr, scope: [:social, :buttons]) %>
-<%= link_to 'http://www.tumblr.com/share/link?' + { url: spree.product_url(@product), name: @product.name, description: @product.description }.to_param, title: title, class: 'tumblr-share' do %>
-  <%= title %>
-<% end %>
+<% url = 'http://www.tumblr.com/share/link?' + { url: spree.product_url(@product), name: @product.name, description: @product.description }.to_param %>
+<a class="dropdown-item p-2 d-flex align-items-center border-bottom" href="<%= url %>">
+  <div class="flex items-center">
+    <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 3.35714C13 2.33281 12.1672 1.5 11.1429 1.5H1.85714C0.832812 1.5 0 2.33281 0 3.35714V12.6429C0 13.6672 0.832812 14.5 1.85714 14.5H11.1429C12.1672 14.5 13 13.6672 13 12.6429V3.35714ZM7.45179 12.6429C5.26094 12.6429 4.78504 11.0324 4.78504 10.0922V7.48058H3.92321C3.82455 7.48058 3.7433 7.39933 3.7433 7.30067V6.06741C3.7433 5.93683 3.82455 5.82076 3.94933 5.77723C5.07522 5.37969 5.42634 4.39888 5.47857 3.65312C5.49308 3.4529 5.59754 3.35714 5.76875 3.35714H7.05424C7.1529 3.35714 7.23415 3.43839 7.23415 3.53705V5.62634H8.74018C8.83884 5.62634 8.92009 5.70759 8.92009 5.80625V7.28906C8.92009 7.38772 8.83884 7.46897 8.74018 7.46897H7.22835V9.88616C7.22835 10.5071 7.65781 10.8583 8.46161 10.5362C8.54866 10.5013 8.62411 10.4781 8.69375 10.4955C8.75759 10.51 8.79821 10.5565 8.82723 10.6377L9.22768 11.8042C9.2567 11.8971 9.28571 11.9987 9.21897 12.0683C8.97232 12.3324 8.31362 12.6429 7.45179 12.6429Z" fill="black"/>
+    </svg>
+    <p class="d-inline font-weight-bold m-0"><%= Spree.t(:tumblr, scope: [:social, :buttons]) %></p>
+  </div>
+</a>
 
 <script src="//platform.tumblr.com/v1/share.js"></script>
