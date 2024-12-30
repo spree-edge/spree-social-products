@@ -1,4 +1,4 @@
-<% content_for :page_title do %>
+  <% content_for :page_title do %>
   <%= Spree.t(:settings, scope: :social) %>
 <% end %>
 
@@ -49,7 +49,8 @@
           <% end %>
         </div>
       </div>
-
+    </div>
+    <div class="row">
       <div class="col-md-6" data-hook="facebook">
         <legend> Facebook Settings </legend>
         <div class="form-check">
@@ -86,7 +87,8 @@
           <%= form.select :facebook_color_scheme, Spree::SocialSetting.facebook_color_schemes, {}, class: 'select2 w-auto mt-1' %>
         </div>
       </div>
-
+    </div>
+    <div class="row">
       <div class="col-md-6" data-hook="twitter">
         <legend> Twitter Settings </legend>
         <div class="form-group ml-4">

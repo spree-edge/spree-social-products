@@ -1,4 +1,4 @@
-module SpreeSocialSetting
+module SpreeSocialProducts
   module Spree
     module StoreDecorator
       def self.prepended(base)
@@ -8,4 +8,4 @@ module SpreeSocialSetting
   end
 end
 
-::Spree::Store.prepend SpreeSocialSetting::Spree::StoreDecorator
+::Spree::Store.prepend SpreeSocialProducts::Spree::StoreDecorator

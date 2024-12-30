@@ -1,4 +1,4 @@
-module SpreeSocialSetting
+module SpreeSocialProducts
   module ProductsControllerDecorator
     def self.prepended(base)
       base.before_action :find_social_settings
@@ -12,4 +12,4 @@ module SpreeSocialSetting
   end
 end
 
-::Spree::ProductsController.prepend SpreeSocialSetting::ProductsControllerDecorator
+::Spree::ProductsController.prepend SpreeSocialProducts::ProductsControllerDecorator
