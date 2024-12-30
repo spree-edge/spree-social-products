@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
   s.author    = 'Bluebash Spree Team'
   s.email     = 'rahul-dev@bluebash.co'
-  s.homepage  = 'https://github.com/Nextband-online/spree_social_products'
+  s.homepage  = 'https://github.com/spree-edge/spree-social-products'
 
   s.files       = `git ls-files`.split("\n").reject { |f| f.match(/^spec/) && !f.match(/^spec\/fixtures/) }
   s.require_path = 'lib'
